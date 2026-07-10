@@ -1,6 +1,7 @@
 package _05_Minesweeper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import processing.core.PApplet;
@@ -96,7 +97,13 @@ public class Minesweeper extends PApplet {
      *        - - - -
      */
     void revealCell(Cell cell) {
-        
+        if(!cell.mine) {
+        	cell.revealed = true;
+        	if(cell.minesAround == 0) {
+        		getNeighbors(cell);
+        		
+        	}
+        }
     }
     
     /*

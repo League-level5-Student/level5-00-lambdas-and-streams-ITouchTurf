@@ -1,5 +1,6 @@
 package _01_Lambda_Methods;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class LambdaMethods {
@@ -29,7 +30,7 @@ public class LambdaMethods {
 
 		printCustomMessage((s)-> {
 	
-			String printed = "random uppercase";
+			String printed = s;
 			char[] random = new char[printed.length()];
 			String result = "";
 			for(int i = 0; i<5; i++) {
@@ -47,11 +48,11 @@ public class LambdaMethods {
 				result = new String(random);
 				System.out.println(result);
 			}
-		}, "repeat");
+		}, "random uppercase");
 		//4. Call the printCustonMessage method using a lambda so that the String prints with a period in between each character.
 		printCustomMessage((s)-> {
 			
-			String printed = "theres a period in between every character";
+			String printed = s;
 			char[] random = new char[printed.length()*2];
 			String result = "";
 			for(int i = 0; i<5; i++) {
@@ -67,10 +68,25 @@ public class LambdaMethods {
 				result = new String(random);
 				System.out.println(result);
 				}
-		}, "repeat");
+		}, "theres a period in between each character");
 
 		//5. Call the printCustonMessage method using a lambda so that the String prints without any vowels.
-
+printCustomMessage((s) -> {
+	String printed = s;
+	ArrayList<Character>without = new ArrayList<Character>();
+	String result = "";
+	for(int i = 0; i<5; i++) {
+		without = new ArrayList<Character>();
+		for(int j = 0; j<printed.length(); j++) {
+			if(printed.charAt(j) != 'e' && printed.charAt(j) != 'a' && printed.charAt(j) != 'i' && printed.charAt(j) != 'o' && printed.charAt(j) != 'u') {
+				without.add(printed.charAt(j));
+			}
+		}
+		result = without.toString();
+		System.out.println(result);
+	}
+	
+}, "no vowels allowed");
 	}
 
 	public static void printCustomMessage(SpecialPrinter sp, String value) {
